@@ -1,8 +1,13 @@
-(ns starter.browser)
+(ns starter.browser
+  (:require [reagent.dom :as rdom]
+            [starter.bmi :refer [bmi-component]]))
+
 
 ;; start is called by init and after code reloading finishes
 (defn ^:dev/after-load start []
-  (js/console.log "start"))
+  (js/console.log "start")
+  (rdom/render [bmi-component]
+               (.getElementById js/document "app")))
 
 (defn init []
   ;; init is called ONCE when the page loads
